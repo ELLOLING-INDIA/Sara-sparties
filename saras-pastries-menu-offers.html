@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#651C29">
+<title>Sara's Pastries — Home Baking, Menu &amp; Offers | Paraniputhur, Chennai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,450;0,9..144,600;1,9..144,500&family=Work+Sans:wght@300;400;500;600&family=Petit+Formal+Script&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF4EC;
+    --cream-deep:#F2E6D6;
+    --maroon:#651C29;
+    --maroon-deep:#4A1420;
+    --blush:#E9B9C2;
+    --blush-soft:#F4DBE0;
+    --gold:#B4863F;
+    --ink:#2E2420;
+    --line: rgba(101,28,41,0.16);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--cream); color:var(--ink); font-family:'Work Sans', sans-serif; line-height:1.6; overflow-x:hidden;}
+  h1,h2,h3,h4{font-family:'Fraunces', serif; font-weight:450; color:var(--maroon); letter-spacing:-0.01em;}
+  .script{font-family:'Petit Formal Script', cursive; color:var(--gold); font-weight:400;}
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 32px;}
+  img{max-width:100%; display:block;}
+  ::selection{background:var(--blush); color:var(--maroon-deep);}
+
+  /* ---------- MARQUEE OFFER BAR ---------- */
+  .offer-bar{
+    background:var(--maroon-deep); color:var(--cream); overflow:hidden;
+    white-space:nowrap; position:relative; z-index:60; font-size:0.82rem; letter-spacing:0.03em;
+  }
+  .offer-track{display:inline-flex; animation:scroll 26s linear infinite; padding:9px 0;}
+  .offer-track span{padding:0 36px; display:inline-flex; align-items:center; gap:8px; color:var(--blush);}
+  .offer-track span b{color:var(--cream); font-weight:600;}
+  @keyframes scroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+  @media (prefers-reduced-motion: reduce){ .offer-track{animation:none;} }
+
+  /* ---------- HEADER ---------- */
+  header{position:sticky; top:0; z-index:50; background:rgba(251,244,236,0.9); backdrop-filter: blur(10px); border-bottom:1px solid var(--line);}
+  .nav{display:flex; align-items:center; justify-content:space-between; padding:16px 32px; max-width:1120px; margin:0 auto; position:relative;}
+  .logo-mark{display:flex; align-items:center; gap:10px; font-family:'Fraunces', serif; font-size:1.3rem; color:var(--maroon); font-weight:500; flex-shrink:0;}
+  .nav-links{display:flex; gap:30px; align-items:center;}
+  .nav-links a{font-size:0.84rem; letter-spacing:0.05em; text-transform:uppercase; color:var(--maroon-deep); position:relative; padding-bottom:4px;}
+  .nav-links a::after{content:""; position:absolute; left:0; bottom:0; width:0; height:1px; background:var(--gold); transition:width .3s ease;}
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{background:var(--maroon); color:var(--cream) !important; padding:11px 22px; border-radius:2px; font-size:0.8rem; letter-spacing:0.06em; text-transform:uppercase; transition:background .3s ease;}
+  .nav-cta:hover{background:var(--maroon-deep);}
+  .nav-cta::after{display:none;}
+  .nav-toggle{
+    display:none; background:none; border:1px solid var(--line); border-radius:2px; width:42px; height:42px;
+    align-items:center; justify-content:center; cursor:pointer; flex-shrink:0;
+  }
+  .nav-toggle span, .nav-toggle span::before, .nav-toggle span::after{
+    display:block; width:18px; height:1.5px; background:var(--maroon); position:relative; transition:transform .25s ease, opacity .25s ease;
+  }
+  .nav-toggle span::before, .nav-toggle span::after{content:""; position:absolute; left:0;}
+  .nav-toggle span::before{top:-6px;}
+  .nav-toggle span::after{top:6px;}
+  .nav-toggle.open span{background:transparent;}
+  .nav-toggle.open span::before{transform:translateY(6px) rotate(45deg);}
+  .nav-toggle.open span::after{transform:translateY(-6px) rotate(-45deg);}
+
+  /* ---------- HERO (photo) ---------- */
+  .hero{position:relative; min-height:78vh; min-height:78dvh; display:flex; align-items:flex-end;}
+  .hero-bg{position:absolute; inset:0; z-index:0;}
+  .hero-bg img{width:100%; height:100%; object-fit:cover;}
+  .hero-bg::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(74,20,32,0.15) 0%, rgba(74,20,32,0.55) 60%, rgba(38,10,16,0.88) 100%);
+  }
+  .hero-inner{position:relative; z-index:1; padding:64px 32px 56px; max-width:1120px; margin:0 auto; width:100%; color:var(--cream);}
+  .eyebrow{display:flex; align-items:center; gap:10px; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.14em; color:var(--blush); margin-bottom:18px;}
+  .eyebrow .dot{width:5px; height:5px; border-radius:50%; background:var(--blush);}
+  .hero h1{color:var(--cream); font-size:clamp(2.4rem, 5vw, 3.6rem); line-height:1.06; margin-bottom:18px; max-width:640px;}
+  .hero h1 em{font-style:italic; font-weight:300; color:var(--blush-soft);}
+  .hero p.lede{font-size:1.05rem; color:rgba(251,244,236,0.86); max-width:460px; margin-bottom:30px;}
+  .hero-actions{display:flex; gap:16px; flex-wrap:wrap;}
+  .btn-primary{background:var(--cream); color:var(--maroon-deep); padding:15px 30px; font-size:0.86rem; letter-spacing:0.05em; text-transform:uppercase; border-radius:2px; transition:transform .3s ease, background .3s ease; display:inline-flex; align-items:center; gap:8px; font-weight:500;}
+  .btn-primary:hover{background:var(--blush-soft); transform:translateY(-2px);}
+  .btn-ghost{border:1px solid rgba(251,244,236,0.6); color:var(--cream); padding:14px 28px; font-size:0.86rem; letter-spacing:0.05em; text-transform:uppercase; border-radius:2px; transition:all .3s ease;}
+  .btn-ghost:hover{background:rgba(251,244,236,0.12); border-color:var(--cream);}
+  .rating-strip{display:flex; gap:26px; margin-top:40px; padding-top:24px; border-top:1px solid rgba(251,244,236,0.25);}
+  .rating-strip div{display:flex; flex-direction:column; gap:2px;}
+  .rating-strip .num{font-family:'Fraunces',serif; font-size:1.5rem; color:var(--cream); font-weight:500;}
+  .rating-strip .lbl{font-size:0.74rem; color:rgba(251,244,236,0.7); text-transform:uppercase; letter-spacing:0.06em;}
+
+  /* ---------- SECTION HEADER ---------- */
+  .sec-head{max-width:640px; margin-bottom:48px;}
+  .sec-head .eyebrow{color:var(--gold); margin-bottom:14px;}
+  .sec-head .eyebrow .dot{background:var(--gold);}
+  .sec-head h2{font-size:clamp(2rem, 3.4vw, 2.7rem);}
+  .sec-head p{color:#5b4c44; margin-top:14px; font-size:1.02rem;}
+  section{padding:88px 0; position:relative;}
+  .divider{height:1px; background:linear-gradient(to right, transparent, var(--line) 15%, var(--line) 85%, transparent);}
+
+  /* ---------- OFFERS CARDS ---------- */
+  .offers-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
+  .offer-card{background:var(--cream); padding:34px 26px; position:relative;}
+  .offer-card .pct{font-family:'Fraunces',serif; font-size:2.1rem; color:var(--maroon); font-weight:500; margin-bottom:10px;}
+  .offer-card h4{font-size:1rem; margin-bottom:8px; color:var(--maroon-deep);}
+  .offer-card p{font-size:0.85rem; color:#6b5b52;}
+  .offer-card .code{margin-top:14px; display:inline-block; font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--gold); border:1px dashed var(--gold); padding:5px 10px;}
+
+  /* ---------- MENU with photos ---------- */
+  .menu-tabs{display:flex; gap:10px; margin-bottom:40px; flex-wrap:wrap;}
+  .menu-tab{font-size:0.8rem; letter-spacing:0.04em; text-transform:uppercase; padding:9px 18px; border:1px solid var(--line); border-radius:20px; color:var(--maroon-deep); background:var(--cream); cursor:pointer; transition:all .25s ease;}
+  .menu-tab.active, .menu-tab:hover{background:var(--maroon); color:var(--cream); border-color:var(--maroon);}
+
+  .menu-photo-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:28px;}
+  .menu-photo-card{background:var(--cream-deep); border:1px solid var(--line); overflow:hidden; display:flex; flex-direction:column;}
+  .menu-photo-card .ph{aspect-ratio:4/3; overflow:hidden; position:relative; background:var(--blush-soft);}
+  .menu-photo-card .ph img{width:100%; height:100%; object-fit:cover; transition:transform .6s ease;}
+  .menu-photo-card:hover .ph img{transform:scale(1.06);}
+  .menu-photo-card .ph .badge{position:absolute; top:12px; left:12px; background:var(--maroon); color:var(--cream); font-size:0.66rem; text-transform:uppercase; letter-spacing:0.06em; padding:5px 10px; border-radius:2px;}
+  .menu-photo-card .body{padding:22px 22px 24px; display:flex; flex-direction:column; gap:8px; flex-grow:1;}
+  .menu-photo-card .row{display:flex; justify-content:space-between; align-items:baseline; gap:10px;}
+  .menu-photo-card h3{font-size:1.15rem; font-weight:450;}
+  .menu-photo-card .price{font-family:'Fraunces',serif; color:var(--gold); font-size:1.05rem; white-space:nowrap;}
+  .menu-photo-card p{font-size:0.88rem; color:#6b5b52; flex-grow:1;}
+  .menu-photo-card .unit{font-size:0.7rem; color:#9a8a7f; text-transform:uppercase; letter-spacing:0.04em;}
+
+  /* icon-only menu card (no photo) */
+  .menu-icon-card{background:var(--cream-deep); border:1px solid var(--line); padding:26px 24px; display:flex; flex-direction:column; gap:10px;}
+  .menu-icon-card .ic{margin-bottom:6px;}
+  .menu-icon-card h3{font-size:1.1rem; font-weight:450;}
+  .menu-icon-card .row{display:flex; justify-content:space-between; align-items:baseline;}
+  .menu-icon-card .price{font-family:'Fraunces',serif; color:var(--gold); font-size:1rem;}
+  .menu-icon-card p{font-size:0.86rem; color:#6b5b52;}
+  .fine-print{margin-top:36px; font-size:0.82rem; color:#8a7a70; display:flex; align-items:center; gap:8px;}
+
+  /* ---------- ABOUT ---------- */
+  .about{background:var(--cream-deep);}
+  .about-grid{display:grid; grid-template-columns:0.85fr 1.15fr; gap:56px; align-items:center;}
+  .about-photo{border:1px solid var(--line); overflow:hidden; aspect-ratio:3/4;}
+  .about-photo img{width:100%; height:100%; object-fit:cover;}
+  .about-badges{display:flex; flex-wrap:wrap; gap:12px; margin-top:26px;}
+  .pill{border:1px solid var(--maroon); color:var(--maroon); font-size:0.8rem; padding:9px 16px; border-radius:20px; display:flex; align-items:center; gap:7px;}
+
+  /* ---------- ORDER STEPS ---------- */
+  .order-sec{background:var(--maroon); color:var(--cream);}
+  .order-sec h2, .order-sec .eyebrow{color:var(--cream);}
+  .order-sec .eyebrow{color:var(--blush);}
+  .order-sec .eyebrow .dot{background:var(--blush);}
+  .order-sec .sec-head p{color:rgba(251,244,236,0.72);}
+  .steps{display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid rgba(251,244,236,0.22);}
+  .step{padding:36px 32px 0; border-right:1px solid rgba(251,244,236,0.22);}
+  .step:last-child{border-right:none;}
+  .step .idx{font-family:'Fraunces',serif; font-size:0.85rem; color:var(--blush); letter-spacing:0.1em; margin-bottom:14px; display:block;}
+  .step h3{color:var(--cream); font-size:1.25rem; margin-bottom:8px; font-weight:450;}
+  .step p{color:rgba(251,244,236,0.72); font-size:0.92rem;}
+  .step .contact-line{margin-top:14px; font-size:0.94rem; color:var(--cream); display:flex; gap:8px; align-items:center;}
+  .step .contact-line a{text-decoration:underline;}
+
+  /* ---------- REVIEWS ---------- */
+  .reviews-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:26px;}
+  .review-card{background:var(--cream-deep); border:1px solid var(--line); padding:30px 26px; display:flex; flex-direction:column; gap:16px;}
+  .stars{display:flex; gap:3px; color:var(--gold);}
+  .review-card p.quote{font-size:0.96rem; color:#4a3d36; font-style:italic; flex-grow:1;}
+  .reviewer{display:flex; align-items:center; gap:10px;}
+  .reviewer .av{width:32px; height:32px; border-radius:50%; background:var(--maroon); color:var(--cream); display:flex; align-items:center; justify-content:center; font-family:'Fraunces',serif; font-size:0.82rem;}
+  .reviewer .name{font-size:0.86rem; color:var(--maroon-deep); font-weight:500;}
+  .reviewer .when{font-size:0.74rem; color:#8a7a70;}
+
+  /* ---------- VISIT ---------- */
+  .visit{background:var(--cream-deep);}
+  .visit-grid{display:grid; grid-template-columns:1fr 1fr; gap:56px;}
+  .info-row{display:flex; gap:18px; padding:20px 0; border-bottom:1px solid var(--line);}
+  .info-row:first-child{padding-top:0;}
+  .info-row h4{font-family:'Work Sans',sans-serif; text-transform:uppercase; letter-spacing:0.04em; font-size:0.74rem; color:var(--maroon-deep); font-weight:600; margin-bottom:4px;}
+  .info-row p{font-size:0.96rem; color:#4a3d36;}
+  .info-row a.link{color:var(--maroon); text-decoration:underline; text-underline-offset:3px;}
+  .map-frame{border:1px solid var(--line); background:var(--cream); position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center; min-height:320px;}
+  .map-frame svg{width:100%; height:100%; position:absolute; inset:0;}
+  .map-pin{position:relative; z-index:2; text-align:center;}
+  .map-pin .label{margin-top:10px; font-family:'Fraunces',serif; color:var(--maroon); font-size:1rem; background:var(--cream); padding:6px 14px; border:1px solid var(--line); display:inline-block;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--maroon-deep); color:var(--cream); padding:60px 0 26px;}
+  .foot-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:44px; padding-bottom:40px; border-bottom:1px solid rgba(251,244,236,0.16);}
+  .foot-logo{font-family:'Fraunces',serif; font-size:1.35rem; margin-bottom:14px;}
+  .foot-grid p{color:rgba(251,244,236,0.65); font-size:0.92rem; max-width:280px;}
+  .foot-col h5{font-size:0.74rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--blush); margin-bottom:16px;}
+  .foot-col a{display:block; font-size:0.92rem; color:rgba(251,244,236,0.78); margin-bottom:10px;}
+  .foot-col a:hover{color:var(--cream);}
+  .foot-bottom{display:flex; justify-content:space-between; align-items:center; padding-top:24px; font-size:0.8rem; color:rgba(251,244,236,0.5); flex-wrap:wrap; gap:12px;}
+
+  .reveal{opacity:0; transform:translateY(20px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1; transform:none;}
+  @media (prefers-reduced-motion: reduce){ .reveal{opacity:1; transform:none; transition:none;} html{scroll-behavior:auto;} }
+
+  /* ============ RESPONSIVE TIERS ============ */
+
+  /* Large tablet / small laptop */
+  @media (max-width: 1024px){
+    .wrap, .nav, .hero-inner{padding-left:26px; padding-right:26px;}
+    section{padding:72px 0;}
+    .offers-grid{grid-template-columns:repeat(2,1fr);}
+    .menu-photo-grid{grid-template-columns:repeat(2,1fr);}
+    .about-grid{gap:40px;}
+    .visit-grid{gap:40px;}
+  }
+
+  /* Tablet: collapse nav into hamburger menu */
+  @media (max-width: 900px){
+    .nav-toggle{display:flex;}
+    .nav-links{
+      display:flex; flex-direction:column; align-items:stretch; gap:0;
+      position:absolute; top:calc(100% + 1px); left:0; right:0;
+      background:var(--cream); border-bottom:1px solid var(--line);
+      box-shadow:0 18px 30px rgba(74,20,32,0.12);
+      max-height:0; overflow:hidden; opacity:0;
+      transition:max-height .35s ease, opacity .3s ease;
+    }
+    .nav-links.open{max-height:420px; opacity:1;}
+    .nav-links a{padding:16px 26px; border-bottom:1px solid var(--line); font-size:0.9rem;}
+    .nav-links a::after{display:none;}
+    .nav-cta{margin:14px 26px; text-align:center; border-bottom:none;}
+  }
+
+  /* Tablet portrait / large phone: stack two-column sections */
+  @media (max-width: 820px){
+    .about-grid, .visit-grid{grid-template-columns:1fr;}
+    .about-photo{order:-1; max-width:380px; margin:0 auto; aspect-ratio:4/3; width:100%;}
+    .steps{grid-template-columns:1fr;}
+    .step{border-right:none; border-bottom:1px solid rgba(251,244,236,0.22); padding:30px 26px;}
+    .step:first-child{padding-top:36px;}
+    .reviews-grid{grid-template-columns:1fr; max-width:520px; margin:0 auto;}
+    .foot-grid{grid-template-columns:1fr; gap:30px;}
+    .foot-grid p{max-width:none;}
+    .hero{min-height:auto;}
+    .hero-inner{padding-top:76px;}
+    .rating-strip{flex-wrap:wrap; row-gap:18px;}
+  }
+
+  /* Phone */
+  @media (max-width: 600px){
+    .wrap, .nav, .hero-inner, section{padding-left:20px; padding-right:20px;}
+    section{padding:56px 0;}
+    .offers-grid, .menu-photo-grid{grid-template-columns:1fr;}
+    .menu-photo-grid{gap:20px;}
+    .sec-head{margin-bottom:34px;}
+    .hero h1{font-size:clamp(2rem, 8vw, 2.6rem);}
+    .hero p.lede{font-size:0.98rem;}
+    .hero-actions{flex-direction:column; align-items:stretch; gap:12px;}
+    .hero-actions a{justify-content:center; text-align:center;}
+    .btn-primary, .btn-ghost{padding:14px 22px;}
+    .offer-card{padding:26px 20px;}
+    .offer-card .pct{font-size:1.7rem;}
+    .foot-bottom{flex-direction:column; align-items:flex-start; gap:8px;}
+    .logo-mark{font-size:1.1rem;}
+    .logo-mark svg{width:24px; height:24px;}
+  }
+
+  /* Small phone */
+  @media (max-width: 380px){
+    .wrap, .nav, .hero-inner, section{padding-left:16px; padding-right:16px;}
+    .hero h1{font-size:1.75rem;}
+    .rating-strip{gap:18px;}
+    .rating-strip .num{font-size:1.25rem;}
+    .offer-track span{padding:0 22px; font-size:0.76rem;}
+    .step{padding-left:20px; padding-right:20px;}
+    .menu-photo-card .body{padding:18px 18px 20px;}
+  }
+
+  /* Landscape phones: hero shouldn't eat the whole viewport */
+  @media (max-height: 480px) and (orientation: landscape){
+    .hero{min-height:auto;}
+    .hero-inner{padding-top:88px; padding-bottom:36px;}
+    .rating-strip{margin-top:24px; padding-top:16px;}
+  }
+
+  /* Larger desktop: give the grid a bit more air */
+  @media (min-width: 1400px){
+    .wrap{max-width:1280px;}
+    .hero-inner{max-width:1280px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="offer-bar"><div class="offer-track">
+  <span>🎂 <b>WELCOME10</b> — flat 10% off your first order</span>
+  <span>🍰 Pre-order 2–3 days ahead for the freshest bake</span>
+  <span>🎉 Bulk orders of 5+ boxes get 15% off — ask on WhatsApp</span>
+  <span>🎂 <b>WELCOME10</b> — flat 10% off your first order</span>
+  <span>🍰 Pre-order 2–3 days ahead for the freshest bake</span>
+  <span>🎉 Bulk orders of 5+ boxes get 15% off — ask on WhatsApp</span>
+</div></div>
+
+<header>
+  <div class="nav">
+    <div class="logo-mark">
+      <svg width="28" height="28" viewBox="0 0 30 30" fill="none">
+        <circle cx="15" cy="15" r="14" stroke="#B4863F" stroke-width="1"/>
+        <path d="M9 19c1.5-6 3.5-9 6-9s4.5 3 6 9" stroke="#651C29" stroke-width="1.3" stroke-linecap="round"/>
+        <circle cx="15" cy="8.5" r="1.6" fill="#E9B9C2"/>
+      </svg>
+      Sara's Pastries
+    </div>
+    <nav class="nav-links" id="navLinks">
+      <a href="#menu">Menu</a>
+      <a href="#offers">Offers</a>
+      <a href="#about">About</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#visit">Visit</a>
+      <a href="#order" class="nav-cta">Order Now</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1514435390218-898a0e01517a?fm=jpg&q=80&w=1800&auto=format&fit=crop" alt="A frosted layer cake, sliced open, on a marble table" loading="eager">
+  </div>
+  <div class="hero-inner">
+    <div class="eyebrow"><span class="dot"></span> Home Baking &middot; Paraniputhur, Chennai</div>
+    <h1>Eggless cakes, <em>baked the way</em> a home would bake them.</h1>
+    <p class="lede">Every order is mixed, layered and frosted fresh after you confirm it — never off a shelf. Take a look at the menu, this week's offers, and how to place your order.</p>
+    <div class="hero-actions">
+      <a href="https://wa.me/919176206365" class="btn-primary">Order on WhatsApp
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 11l8-8M11 3H5M11 3v6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#menu" class="btn-ghost">See the full menu</a>
+    </div>
+    <div class="rating-strip">
+      <div><span class="num">4.9</span><span class="lbl">Rating &middot; 71 reviews</span></div>
+      <div><span class="num">100+</span><span class="lbl">Cakes shared</span></div>
+      <div><span class="num">₹1–200</span><span class="lbl">Per person</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFERS -->
+<section id="offers">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow"><span class="dot"></span> This Week's Offers</div>
+      <h2>A little something extra</h2>
+      <p>Sample promotions to show how offers can run on the site — swap in your real codes and terms any time.</p>
+    </div>
+    <div class="offers-grid reveal">
+      <div class="offer-card">
+        <div class="pct">10% off</div>
+        <h4>First order</h4>
+        <p>New customers save 10% on their first cake or cupcake box.</p>
+        <span class="code">WELCOME10</span>
+      </div>
+      <div class="offer-card">
+        <div class="pct">₹150 off</div>
+        <h4>Refer a friend</h4>
+        <p>Get ₹150 off your next order when a friend you referred orders too.</p>
+        <span class="code">REFER150</span>
+      </div>
+      <div class="offer-card">
+        <div class="pct">15% off</div>
+        <h4>Bulk &amp; party orders</h4>
+        <p>5 or more boxes for an office or event? Save 15% on the full order.</p>
+        <span class="code">BULK15</span>
+      </div>
+      <div class="offer-card">
+        <div class="pct">Free</div>
+        <h4>Birthday message plaque</h4>
+        <p>Every birthday cake includes a custom sugar plaque, no extra charge.</p>
+        <span class="code">AUTO-APPLIED</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="divider"></div></div>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow"><span class="dot"></span> Full Menu</div>
+      <h2>What's baking this week</h2>
+      <p>Sample pricing shown per 500g unless noted — confirm exact rates and sizes when you place your order.</p>
+    </div>
+
+    <div class="menu-photo-grid reveal">
+      <div class="menu-photo-card">
+        <div class="ph"><span class="badge">Bestseller</span>
+          <img src="https://images.unsplash.com/photo-1564844536308-75c540dbf14e?fm=jpg&q=80&w=1200&auto=format&fit=crop" alt="Rich chocolate truffle cake slice" loading="lazy"></div>
+        <div class="body">
+          <div class="row"><h3>Choco Truffle Cake</h3><span class="price">₹650</span></div>
+          <p>Dense, melt-in-the-mouth truffle layers — the cake reviewers say they can't stop at one slice of.</p>
+          <span class="unit">500g &middot; eggless</span>
+        </div>
+      </div>
+      <div class="menu-photo-card">
+        <div class="ph"><img src="https://images.unsplash.com/photo-1600653155864-88227b5b64b0?fm=jpg&q=80&w=1200&auto=format&fit=crop" alt="Colourful rainbow layered glaze cake" loading="lazy"></div>
+        <div class="body">
+          <div class="row"><h3>Rainbow Glaze Cake</h3><span class="price">₹750</span></div>
+          <p>A mirror-glazed sponge finished in a bright, hand-poured rainbow — built for birthdays.</p>
+          <span class="unit">500g &middot; eggless</span>
+        </div>
+      </div>
+      <div class="menu-photo-card">
+        <div class="ph"><img src="https://images.unsplash.com/photo-1543287920-26349b5b1376?fm=jpg&q=80&w=1200&auto=format&fit=crop" alt="A tray of frosted cupcakes" loading="lazy"></div>
+        <div class="body">
+          <div class="row"><h3>Cupcakes (Chocolate)</h3><span class="price">₹60 <span style="font-size:0.7rem; color:#9a8a7f;">/pc</span></span></div>
+          <p>Deep cocoa sponge with a soft crumb, finished with a swirl — where most first orders start.</p>
+          <span class="unit">Sold per piece, box of 6</span>
+        </div>
+      </div>
+      <div class="menu-photo-card">
+        <div class="ph"><span class="badge">Custom</span>
+          <img src="https://images.unsplash.com/photo-1625649611137-df49dc542f6a?fm=jpg&q=80&w=1200&auto=format&fit=crop" alt="Birthday cake with lit candles" loading="lazy"></div>
+        <div class="body">
+          <div class="row"><h3>Birthday &amp; Theme Cakes</h3><span class="price">From ₹800</span></div>
+          <p>Custom shapes, colours and message — priced by design complexity and size.</p>
+          <span class="unit">1kg starting &middot; eggless</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-tabs reveal" style="margin-top:44px;">
+      <span class="menu-tab active">Also on the menu</span>
+    </div>
+    <div class="offers-grid reveal">
+      <div class="menu-icon-card">
+        <div class="ic"><svg width="30" height="30" viewBox="0 0 30 30" fill="none"><rect x="5" y="14" width="20" height="11" rx="2" stroke="#651C29" stroke-width="1.3"/><path d="M5 14 Q9 8 15 8 T25 14" stroke="#651C29" stroke-width="1.3" fill="none"/></svg></div>
+        <div class="row"><h3>Rasamalai Cake</h3><span class="price">₹700</span></div>
+        <p>Eggless sponge layered with rasamalai cream.</p>
+      </div>
+      <div class="menu-icon-card">
+        <div class="ic"><svg width="30" height="30" viewBox="0 0 30 30" fill="none"><circle cx="15" cy="15" r="10" stroke="#651C29" stroke-width="1.3"/><path d="M15 5 L15 25 M5 15 L25 15" stroke="#B4863F" stroke-width="0.8"/></svg></div>
+        <div class="row"><h3>Butterscotch Cake</h3><span class="price">₹600</span></div>
+        <p>Caramelised crunch folded through vanilla sponge.</p>
+      </div>
+      <div class="menu-icon-card">
+        <div class="ic"><svg width="30" height="30" viewBox="0 0 30 30" fill="none"><path d="M15 5 C9 5 7 10 7 14 C7 20 15 25 15 25 C15 25 23 20 23 14 C23 10 21 5 15 5 Z" stroke="#651C29" stroke-width="1.3" fill="none"/></svg></div>
+        <div class="row"><h3>Red Velvet Cake</h3><span class="price">₹680</span></div>
+        <p>Classic red velvet, cream-cheese frosting.</p>
+      </div>
+      <div class="menu-icon-card">
+        <div class="ic"><svg width="30" height="30" viewBox="0 0 30 30" fill="none"><path d="M8 26 L7 16 Q15 11 23 16 L22 26 Z" stroke="#651C29" stroke-width="1.3" fill="none"/></svg></div>
+        <div class="row"><h3>Vanilla &amp; Fruit Cake</h3><span class="price">₹550</span></div>
+        <p>Light vanilla sponge with seasonal fruit filling.</p>
+      </div>
+    </div>
+    <p class="fine-print reveal">✳️ Sample menu for demonstration — final flavours, sizes and prices are confirmed over DM or call before every order.</p>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="about-photo reveal">
+      <img src="https://images.unsplash.com/photo-1514435390218-898a0e01517a?fm=jpg&q=80&w=1000&auto=format&fit=crop" alt="A home-baked cake sliced and ready to serve" loading="lazy">
+    </div>
+    <div class="reveal">
+      <div class="eyebrow"><span class="dot"></span> About Sara's</div>
+      <h2>A home kitchen,<br>not a factory line.</h2>
+      <p style="color:#5b4c44; font-size:1.02rem; max-width:480px; margin-top:18px;">Sara's Pastries began as home baking for family and friends, and grew one referral at a time into a name Paraniputhur orders birthdays around. Every cake is 100% eggless, mixed in small batches, and made only after your order comes in.</p>
+      <div class="about-badges">
+        <span class="pill">🥚 100% Eggless</span>
+        <span class="pill">🎂 Made to order</span>
+        <span class="pill">👩‍🍳 Women-owned</span>
+        <span class="pill">📍 Paraniputhur, Chennai</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORDER -->
+<section class="order-sec" id="order">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow"><span class="dot"></span> How To Order</div>
+      <h2>Pre-order 2–3 days ahead</h2>
+      <p>Cakes are baked after your order is confirmed, so a little lead time means a fresher cake on the day you need it.</p>
+    </div>
+    <div class="steps reveal">
+      <div class="step">
+        <span class="idx">01</span>
+        <h3>Reach out</h3>
+        <p>Message on Instagram or WhatsApp, or call to talk through flavours, size and design.</p>
+        <div class="contact-line">📞 <a href="tel:+919176206365">91762 06365</a></div>
+        <div class="contact-line">✉️ <a href="mailto:sarajames4569@gmail.com">sarajames4569@gmail.com</a></div>
+      </div>
+      <div class="step">
+        <span class="idx">02</span>
+        <h3>Confirm details</h3>
+        <p>Flavour, size, message and delivery date get locked in — apply any offer code at this step.</p>
+      </div>
+      <div class="step">
+        <span class="idx">03</span>
+        <h3>Pickup or delivery</h3>
+        <p>Collect from Paraniputhur, or arrange delivery within the area at the time of booking.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow"><span class="dot"></span> Reviews &middot; 4.9 out of 5</div>
+      <h2>What regulars say</h2>
+      <p>71 reviews and counting, from birthdays, first-time orders and repeat customers.</p>
+    </div>
+    <div class="reviews-grid reveal">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"The chocolate cupcakes were incredibly soft — genuinely one of the best I've had."</p>
+        <div class="reviewer"><div class="av">S</div><div><div class="name">storiesbypreetham</div><div class="when">Google review</div></div></div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"The choco truffle cake melts in your mouth — unlike anything I'd had before, still just as tempting."</p>
+        <div class="reviewer"><div class="av">K</div><div><div class="name">Kishore Kumar V</div><div class="when">Google review</div></div></div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"Didn't expect the taste, the size or the finishing to be that good. Thank you so much!"</p>
+        <div class="reviewer"><div class="av">D</div><div><div class="name">Divya Bharathi</div><div class="when">Google review</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="visit" id="visit">
+  <div class="wrap visit-grid">
+    <div class="reveal">
+      <div class="eyebrow"><span class="dot"></span> Visit &amp; Contact</div>
+      <h2 style="margin-bottom:24px;">Find us in Paraniputhur</h2>
+      <div class="info-row"><div><h4>Address</h4><p>TVS Emerald Green Enclave, Mangadu Rd, Paraniputhur, Chennai, Tamil Nadu 600122</p></div></div>
+      <div class="info-row"><div><h4>Hours</h4><p>Open today &middot; closes 9 pm</p></div></div>
+      <div class="info-row"><div><h4>Order by phone</h4><p><a class="link" href="tel:+919176206365">91762 06365</a> &middot; <a class="link" href="mailto:sarajames4569@gmail.com">sarajames4569@gmail.com</a></p></div></div>
+      <div class="info-row"><div><h4>Follow along</h4><p><a class="link" href="https://www.instagram.com/saras_pastries1972/" target="_blank" rel="noopener">@saras_pastries1972</a> on Instagram</p></div></div>
+    </div>
+    <div class="map-frame reveal">
+      <svg viewBox="0 0 400 340" fill="none">
+        <path d="M0 60 H400 M0 130 H400 M0 200 H400 M0 270 H400" stroke="#651C29" stroke-opacity="0.06" stroke-width="1"/>
+        <path d="M60 0 V340 M150 0 V340 M250 0 V340 M340 0 V340" stroke="#651C29" stroke-opacity="0.06" stroke-width="1"/>
+        <path d="M0 170 Q120 140 200 170 T400 170" stroke="#B4863F" stroke-opacity="0.35" stroke-width="2" fill="none"/>
+      </svg>
+      <div class="map-pin">
+        <svg width="30" height="38" viewBox="0 0 30 38" fill="none"><path d="M15 37S28 22 28 14A13 13 0 102 14C2 22 15 37 15 37Z" fill="#651C29"/><circle cx="15" cy="14" r="5" fill="#FBF4EC"/></svg>
+        <div class="label">Sara's Pastries</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo">Sara's <span class="script" style="font-size:1.25rem;">Pastries</span></div>
+        <p>Eggless, home-baked cakes and cupcakes from Paraniputhur, Chennai — made fresh after every order, never before.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Explore</h5>
+        <a href="#menu">Menu</a>
+        <a href="#offers">Offers</a>
+        <a href="#about">About</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#visit">Visit</a>
+      </div>
+      <div class="foot-col">
+        <h5>Get in touch</h5>
+        <a href="tel:+919176206365">91762 06365</a>
+        <a href="mailto:sarajames4569@gmail.com">sarajames4569@gmail.com</a>
+        <a href="https://www.instagram.com/saras_pastries1972/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Sara's Pastries, Chennai</span>
+      <span>Pre-orders 2–3 days in advance &middot; Takeaway &amp; delivery</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  }, {threshold:0.12});
+  revealEls.forEach(el=>io.observe(el));
+
+  // Mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    navToggle.classList.toggle('open', isOpen);
+    navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  // Close menu after tapping a link, and on resize past the mobile breakpoint
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    navToggle.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }));
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 900) {
+      navLinks.classList.remove('open');
+      navToggle.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+</script>
+</body>
+</html>
